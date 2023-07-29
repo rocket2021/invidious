@@ -408,8 +408,8 @@ private module Parsers
   # Returns nil when the given object isn't a RichItemRenderer
   #
   # A richItemRenderer seems to be a simple wrapper for a videoRenderer, used
-  # by the result page for hashtags. It is located inside a continuationItems
-  # container.
+  # by the result page for hashtags and for the podcast tab on channels.
+  # It is located inside a continuationItems container for hashtags.
   #
   module RichItemRendererParser
     def self.process(item : JSON::Any, author_fallback : AuthorFallback)
@@ -421,6 +421,7 @@ private module Parsers
     private def self.parse(item_contents, author_fallback)
       child = VideoRendererParser.process(item_contents, author_fallback)
       child ||= ReelItemRendererParser.process(item_contents, author_fallback)
+      child ||= PlaylistRendererParser.process(item_contents, author_fallback)
       return child
     end
 
@@ -607,19 +608,25 @@ private module Extractors
     private def self.unpack_section_list(contents)
       raw_items = [] of JSON::Any
 
-      contents.as_a.each do |renderer_container|
-        renderer_container_contents = renderer_container["itemSectionRenderer"]["contents"][0]
-
-        # Category extraction
-        if items_container = renderer_container_contents["shelfRenderer"]?
-          raw_items << renderer_container_contents
-          next
-        elsif items_container = renderer_container_contents["gridRenderer"]?
+      contents.as_a.each do |item|
+        if item_section_content = item.dig?("itemSectionRenderer", "contents")
+          raw_items += self.unpack_item_section(item_section_content)
         else
-          items_container = renderer_container_contents
+          raw_items << item
         end
+      end
 
-        items_container["items"]?.try &.as_a.each do |item|
+      return raw_items
+    end
+
+    private def self.unpack_item_section(contents)
+      raw_items = [] of JSON::Any
+
+      contents.as_a.each do |item|
+        # Category extraction
+        if container = item.dig?("gridRenderer", "items") || item.dig?("items")
+          raw_items += container.as_a
+        else
           raw_items << item
         end
       end
