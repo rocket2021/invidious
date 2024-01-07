@@ -3,22 +3,22 @@
  position: fixed;
  }
 .video-title{
-  width: 78%
+  width: 80%;
 }
 .video-infos{
-  /*width:60%;*/
+  width:100%;
 }
 .video-playlist{
-  right: 5vh;
+  right: 0;
   position: absolute;
   width: 20%;
-  top: 8vh;
+  top: 9vh;
 }
 #player-container{
   width: 80%;
   left: 0;
   position: sticky;
-  margin: 0;
+  /*! margin: 0; */
 }
 .content {
  margin-top: 50px;
@@ -738,7 +738,7 @@ footer{
     display: none;
   }
   .pure-u-md-20-24 {
-    width: 94% !important;
+    width: 97% !important;
     max-width: 121em !important;
     margin: auto;
   }
