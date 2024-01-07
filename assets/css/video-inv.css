@@ -3,7 +3,7 @@
  position: fixed;
  }
 .video-title{
-  /*width: 78%*/
+  width: 78%
 }
 .video-infos{
   /*width:60%;*/
@@ -668,11 +668,11 @@ footer{
         .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button::before {
             display: none; } }
 
-    /* Video player: Size */
-    .pure-u-md-20-24 {
-        width: 94% !important;
-        max-width: range-screen-width !important;
-        margin: auto; }
+        /* Video player: Size */
+        .pure-u-md-20-24 {
+            width: 94% !important;
+            max-width: 121em !important;
+            margin: auto;}
 
     /* Video player: Remove black borders */
     .player-dimensions.vjs-fluid {
