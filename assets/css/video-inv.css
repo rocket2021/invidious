@@ -746,8 +746,8 @@ footer{
     padding-top: 56.25% !important;
   }
   #player-container {
-    transition: all 0.2s;
-    padding-bottom: 54.7% !important;
+	   transition: all 0.2s;
+	   padding-bottom: 45% !important;
   }
 @media screen and (max-width: 48em) {
     #player-container {
