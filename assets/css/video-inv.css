@@ -608,9 +608,10 @@ footer{
   p.length {
     padding: 5px 8px 5px 8px;
     right: 0.4em;
-    bottom: -0.6em;
+    bottom: 0.6em;
     font-size: 11pt;
     border-radius: 18px;
+    position: absolute;
   }
   .dark-theme .navbar .index-link,
   .no-theme .navbar .index-link,
