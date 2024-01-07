@@ -18,7 +18,7 @@
   width: 80%;
   left: 0;
   position: sticky;
-  /*! margin: 0; */
+  margin: 0;
 }
 .content {
  margin-top: 50px;
