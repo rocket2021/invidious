@@ -33,6 +33,7 @@ footer{
   width: 80%;
 }
 }
+#toggle_theme {display: none;}
 
 .dark-theme .video-title{background-color: #444;}
 .dark-theme .video-settings{background-color: #28323D;}
